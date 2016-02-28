@@ -3,6 +3,7 @@
 #AutoIt3Wrapper_Res_Fileversion=1.1
 #AutoIt3Wrapper_Res_LegalCopyright=MIT admin@BetaLeaf.net
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
+opt("TrayIconHide",True)
 ;Your DVD/CD Drive Letter.
 Global $Drive = "E:"
 
@@ -86,7 +87,9 @@ Func AutoISO()
 		Else
 
 			;Alert user that ISO creation failed and will be retried.
-			MsgBox(0, "AutoISO", "ISO Creation Failed, Retrying.")
+
+			if not MsgBox(1, "AutoISO", "ISO Creation Failed, Retrying.") = 1 then exit
+
 
 			;Return -1 = Ripped Unsuccessfully - Retrying...
 			Return -1
